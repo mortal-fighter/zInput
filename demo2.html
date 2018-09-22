@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>zInput Demo 2</title>
+<link id="stylesheet" rel="stylesheet" type="text/css" href="css/zInput_default_stylesheet.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="zInput.js"></script>
+
+<div id="container">
+	<div id="group-1">
+		<input type="radio" name="radiogroup" title="radio 1"/>
+		<input type="radio" name="radiogroup" title="radio 2"/>
+	</div>
+</div>
+<input id="btn-addnew" type="button" value="Add new group"/>
+
+<script>
+	var numGroups = 1;
+
+	$('#group-1').zInput();
+
+	$('#btn-addnew').on('click', function() {
+		var newNumGroups = numGroups + 1;
+		var newGroup = $('<div id="group-' + newNumGroups + '"></div>')
+			.append($('<input type="checkbox" name="group-' + newNumGroups + '" title="checkbox 1"/>'))
+			.append($('<input type="checkbox" name="group-' + newNumGroups + '" title="checkbox 2"/>'));
+		$('#container').append(newGroup);
+		$('#group-' + newNumGroups).zInput();
+		numGroups = newNumGroups;
+	});
+</script>
+
+</body>

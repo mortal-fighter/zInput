@@ -25,10 +25,10 @@ $.each(inputNames, function(index,value){
 	});
 
 
-var $zRadio = $(".zInput").not(".zCheckbox");
-var $zCheckbox	= $(".zCheckbox");
+var $zRadio = $(".zInput", this).not(".zCheckbox");
+var $zCheckbox	= $(".zCheckbox", this);
 
-$zRadio.click(function(){
+$zRadio.on('click.zInput', function(){
 	$theClickedButton = $(this);
 
 	//move up the DOM to the .zRadioWrapper and then select children. Remove .zSelected from all .zRadio
@@ -37,7 +37,7 @@ $zRadio.click(function(){
 	$theClickedButton.find(":radio").prop("checked", true).change();	
 	});
 
-$zCheckbox.click(function(){
+$zCheckbox.on('click.zInput', function(){
 	$theClickedButton = $(this);
 
 	//move up the DOM to the .zRadioWrapper and then select children. Remove .zSelected from all .zRadio
